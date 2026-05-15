@@ -1,7 +1,5 @@
 # Jordan-Tourism-and-Antiques-Statistics-Dashboard
 
-# Jordan Tourism Statistics Dashboard
-
 A Power BI dashboard that visualizes Jordan's tourism sector, covering international visitor arrivals, expenditure, accommodation, employment, tourist sites, and domestic tourism. Data comes from the Jordanian **Ministry of Tourism & Antiquities**.
 
 🔗 **Live Dashboard:** [View on Power BI](https://app.powerbi.com/view?r=eyJrIjoiYmUxMDQwZjUtNmYwNC00MDZkLWE1YjUtMjYxMjQwMTdhNjUzIiwidCI6IjI0Nzc2OGNkLWQyY2EtNDQyMy1iYWEwLTI2ZjgwODQ2OWRlNCIsImMiOjl9)
