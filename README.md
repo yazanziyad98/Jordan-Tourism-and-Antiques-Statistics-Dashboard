@@ -42,3 +42,42 @@ The dashboard gives a full view of Jordan's tourism industry across several dime
 
 - **Microsoft Power BI** for data modeling, DAX measures, and interactive visuals.
 - **Data Source:** Jordan Ministry of Tourism & Antiquities.
+
+## Sample DAX Measures
+
+A few measures used in the dashboard:
+
+**Year-over-Year change in international arrivals**
+```dax
+Int. tourism arrivals = 
+VAR PYTouristsNum = CALCULATE([Total Tourists - Arrivals], DATEADD(Dim_Date[FullDate], -1, YEAR))
+RETURN 
+    IF(
+        ISBLANK([Total Tourists - Arrivals]), BLANK(),
+        DIVIDE([Total Tourists - Arrivals] - PYTouristsNum, PYTouristsNum) + 0
+    )
+```
+
+**Income per Tourist (aggregated by year)**
+```dax
+Income per Tourist = 
+SUMMARIZECOLUMNS(
+    vwSurveyConstantsTransactionsDashboard[Year],
+    "Total Income", [Total Tourism Income],
+    "Total Tourists", SUM('vwSurveyConstantsTransactionsDashboard'[Number_Of_Tourists])
+)
+```
+
+**Summarized trip bookings (Urdunna Jannah program)**
+```dax
+Summarized Utilization = 
+SUMMARIZE(
+    'Urdunna Jannah 2021',
+    'Urdunna Jannah 2021'[OrderDate],
+    'Urdunna Jannah 2021'[StartingPoint1_Ar],
+    'Urdunna Jannah 2021'[TripName],
+    'Urdunna Jannah 2021'[OfficeName_Ar],
+    'Urdunna Jannah 2021'[CityName_En],
+    "PeopleBooking", COUNT('Urdunna Jannah 2021'[PeopleId])
+)
+```
